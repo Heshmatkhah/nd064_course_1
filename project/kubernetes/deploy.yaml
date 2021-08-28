@@ -18,7 +18,7 @@ spec:
         app: sandbox
     spec:
       containers:
-        - image: techtrends:latest
+        - image: heshmatkhah/techtrends:latest
           name: techtrends
           ports:
             - containerPort: 3111

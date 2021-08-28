@@ -1,22 +1,13 @@
 ## Docker commands used to build the application 
-```bash
 docker build -t techtrends .
-```
 
 ## Docker commands used to run the application
-```bash
 docker run -d --rm -p 7111:3111 techtrends
-```
 
 ## Docker commands used to get the application logs
-if we run docker with `-d` we need this command to get logs, other wise it will show the logs after previous command
-```bash
 docker logs -f 9461c972bfb
-```
 
 ## Logs from the container running the TechTrends application
-As we set loglevel to **DEBUG**, we can see all the logs we created.
-```
  * Serving Flask app "app" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -45,5 +36,3 @@ As we set loglevel to **DEBUG**, we can see all the logs we created.
 [2021-08-28 11:44:05,606] DEBUG in app: Existing article is retrieved: Test Post
 172.17.0.1 - - [28/Aug/2021 11:44:05] "GET /7 HTTP/1.1" 200 -
 172.17.0.1 - - [28/Aug/2021 11:44:07] "GET / HTTP/1.1" 200 -
-^C
-```

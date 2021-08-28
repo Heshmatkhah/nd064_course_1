@@ -14,25 +14,23 @@ docker logs -f 9461c972bfb
    Use a production WSGI server instead.
  * Debug mode: off
  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-172.17.0.1 - - [28/Aug/2021 11:42:17] "GET / HTTP/1.1" 200 -
-[2021-08-28 11:42:19,476] DEBUG in app: Existing article is retrieved: 2020 CNCF Annual Report
-172.17.0.1 - - [28/Aug/2021 11:42:19] "GET /1 HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:42:29] "GET /metrics HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:42:42] "GET /healthz HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:42:53] "GET / HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:42:55] "GET /create HTTP/1.1" 200 -
-[2021-08-28 11:43:10,902] DEBUG in app: New article is created: Test Post
-172.17.0.1 - - [28/Aug/2021 11:43:10] "POST /create HTTP/1.1" 302 -
-172.17.0.1 - - [28/Aug/2021 11:43:11] "GET / HTTP/1.1" 200 -
-[2021-08-28 11:43:28,304] DEBUG in app: The `About Us` page is retrieved
-172.17.0.1 - - [28/Aug/2021 11:43:28] "GET /about HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:43:33] "GET / HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:43:51] "GET / HTTP/1.1" 200 -
-[2021-08-28 11:43:54,053] DEBUG in app: Existing article is retrieved: Kubernetes v1.20 Release Notes
-172.17.0.1 - - [28/Aug/2021 11:43:54] "GET /3 HTTP/1.1" 200 -
-[2021-08-28 11:43:56,488] DEBUG in app: Existing article is retrieved: KubeCon + CloudNativeCon 2021
-172.17.0.1 - - [28/Aug/2021 11:43:56] "GET /2 HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:44:02] "GET / HTTP/1.1" 200 -
-[2021-08-28 11:44:05,606] DEBUG in app: Existing article is retrieved: Test Post
-172.17.0.1 - - [28/Aug/2021 11:44:05] "GET /7 HTTP/1.1" 200 -
-172.17.0.1 - - [28/Aug/2021 11:44:07] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:34:06] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:34:06] "GET /static/css/main.css HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:34:06] "GET /favicon.ico HTTP/1.1" 404 -
+[2021-08-28 18:34:17,600] DEBUG in app: Existing article is retrieved: 2020 CNCF Annual Report
+172.17.0.1 - - [28/Aug/2021 18:34:17] "GET /1 HTTP/1.1" 200 -
+[2021-08-28 18:34:20,745] DEBUG in app: The `About Us` page is retrieved
+172.17.0.1 - - [28/Aug/2021 18:34:20] "GET /about HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:34:23] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:34:26] "GET /create HTTP/1.1" 200 -
+[2021-08-28 18:34:44,833] DEBUG in app: New article is created: Test Post
+172.17.0.1 - - [28/Aug/2021 18:34:44] "POST /create HTTP/1.1" 302 -
+172.17.0.1 - - [28/Aug/2021 18:34:45] "GET / HTTP/1.1" 200 -
+[2021-08-28 18:34:51,369] DEBUG in app: Existing article is retrieved: Test Post
+172.17.0.1 - - [28/Aug/2021 18:34:51] "GET /7 HTTP/1.1" 200 -
+[2021-08-28 18:34:55,051] DEBUG in app: Article with id 8 not found!
+172.17.0.1 - - [28/Aug/2021 18:34:55] "GET /8 HTTP/1.1" 404 -
+172.17.0.1 - - [28/Aug/2021 18:34:59] "GET /metrics HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:35:06] "GET /healthz HTTP/1.1" 200 -
+172.17.0.1 - - [28/Aug/2021 18:35:54] "GET / HTTP/1.1" 200 -
+^C

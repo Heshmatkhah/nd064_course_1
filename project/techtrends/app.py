@@ -1,11 +1,50 @@
+import logging
+import sqlite3
+
 from flask import Flask, json, render_template, request, url_for, redirect, flash
 
-from .databse import get_db_connection, get_post, get_post_count, get_connection_count
 
+# ================================
+#      Database Connection       #
+# ================================
+# Function to get a database connection.
+# This function connects to database with the name `database.db`
+def get_db_connection():
+	connection = sqlite3.connect('database.db')
+	connection.row_factory = sqlite3.Row
+	# Increase total number of connections.
+	connection.execute("UPDATE information SET value = CAST(CAST(value +1 AS INT) AS TEXT) where key = 'connections'")
+	connection.commit()
+	return connection
+
+
+# Function to get a post using its ID
+def get_post(post_id):
+	connection = get_db_connection()
+	post = connection.execute('SELECT * FROM posts WHERE id = ?', (post_id,)).fetchone()
+	connection.close()
+	return post
+
+
+def get_post_count():
+	connection = get_db_connection()
+	post = connection.execute('SELECT COUNT(*) FROM posts;', ).fetchone()
+	return post['count(*)']
+
+
+def get_connection_count():
+	connection = get_db_connection()
+	count = connection.execute("SELECT value FROM information where key = 'connections';", ).fetchone()
+	return int(count['value'])
+
+
+# ================================
+#     Application Functions      #
+# ================================
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
-
+app.logger.setLevel(logging.DEBUG)
 
 # Health check endpoint
 @app.route('/healthz')
@@ -50,17 +89,17 @@ def index():
 def post(post_id):
 	post = get_post(post_id)
 	if post is None:
-		app.logger.debug(f"Article with id {post_id} not found!")
+		app.logger.debug("Article with id %d not found!" % (post_id))
 		return render_template('404.html'), 404
 	else:
-		app.logger.debug(f"Existing article is retrieved: {post['title']}")
+		app.logger.debug("Existing article is retrieved: %s" % (post['title']))
 		return render_template('post.html', post=post)
 
 
 # Define the About Us page
 @app.route('/about')
 def about():
-	app.logger.debug(f"The `About Us` page is retrieved")
+	app.logger.debug("The `About Us` page is retrieved")
 	return render_template('about.html')
 
 
@@ -80,7 +119,7 @@ def create():
 			connection.commit()
 			connection.close()
 
-			app.logger.debug(f"New article is created: {title}")
+			app.logger.debug("New article is created: %s" % (title))
 
 			return redirect(url_for('index'))
 

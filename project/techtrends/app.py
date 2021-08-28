@@ -46,12 +46,21 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
 app.logger.setLevel(logging.DEBUG)
 
+
 # Health check endpoint
 @app.route('/healthz')
 def healthcheck():
+	try:
+		conn = get_db_connection()
+		conn.close()
+		result = "OK - healthy"
+		status = 200
+	except:
+		result = "ERROR - unhealthy"
+		status = 500
 	response = app.response_class(
-		response=json.dumps({"result": "OK - healthy"}),
-		status=200,
+		response=json.dumps({"result": result}),
+		status=status,
 		mimetype='application/json'
 	)
 	return response

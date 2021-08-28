@@ -18,19 +18,19 @@ spec:
         app: sandbox
     spec:
       containers:
-        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          name: techtrends
-          ports:
-            - containerPort: {{ .Values.containerPort }}
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: {{ .Values.livenessProbe.path }}
-              port: 3111
-          readinessProbe:
-            httpGet:
-              path: {{ .Values.readinessProbe.path }}
-              port: 3111
-{{ toYaml .Values.resources | indent 12 }}
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: techtrends
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.livenessProbe.path }}
+            port: 3111
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.readinessProbe.path }}
+            port: 3111
+{{ toYaml .Values.resources | indent 8 }}
 status: { }
